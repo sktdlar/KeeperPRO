@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
         <Rectangle Grid.Row="0" Fill="Black"></Rectangle>
         <TextBlock Foreground="Yellow" FontSize="24" FontFamily="Arial" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">ХранительПРО</TextBlock>
-        <Frame Background="Gray" x:Name="MainFrame" Grid.Row="1"></Frame>
+        <Frame Name="MainFrame" Grid.Row="1"></Frame>
         <Rectangle Grid.Row="2" Fill="Black"></Rectangle>
     </Grid>
 </Window>
