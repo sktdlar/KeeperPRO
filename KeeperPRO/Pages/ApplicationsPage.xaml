@@ -6,7 +6,9 @@
       xmlns:local="clr-namespace:KeeperPRO.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ApplicationsPage">
+      Title="ApplicationsPage"
+      Loaded="OnLoaded"
+      >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -38,12 +40,17 @@
                     <TextBlock FontSize="18">Выпустить</TextBlock>
                 </StackPanel>
             </Button>
-            <Button Name="AddNewApp"  Margin="10" Height="30" Width="200" >
-                <StackPanel VerticalAlignment="Center">
-                    <TextBlock FontSize="18">Создать заявку</TextBlock>
-                </StackPanel>
-            </Button>
-        </StackPanel>
+                <Button Name="AddNewApp"  Margin="10" Height="30" Width="200" Click="AddNewApp_Click" >
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock FontSize="18">Создать заявку</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Name="Del"  Margin="10" Height="30" Width="200" Click="Del_Click">
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock FontSize="18">Удалить Заявку</TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
         <TextBlock Grid.Row="1" VerticalAlignment="Center" Margin="10">Сортировка</TextBlock>
         
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">

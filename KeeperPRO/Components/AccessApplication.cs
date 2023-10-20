@@ -28,8 +28,8 @@ namespace KeeperPRO.Components
         public string Lname { get; set; }
         public string Patronymic { get; set; }
         public string Passport { get; set; }
-        public Nullable<System.DateTime> EndTime { get; set; }
         public Nullable<System.DateTime> StartTime { get; set; }
+        public Nullable<System.DateTime> EndTime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Access> Access { get; set; }

@@ -27,19 +27,27 @@ namespace KeeperPRO.Pages
             ApplicationsDG.ItemsSource = App.db.AccessApplication.ToList();
 
         }
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            Refresh();
+
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             AccessApplication application = ApplicationsDG.SelectedItem as AccessApplication;
-            if (application != null & application.EndTime is null)
+            if(application != null) {
+            if (application.StartTime is null)
             {
                 application.StartTime = DateTime.Now;
                 App.db.SaveChanges();
                 Refresh();
+                System.Media.SystemSounds.Beep.Play();
             }
             else
             {
                 MessageBox.Show("Данные уже записаны или введены некорректно");
+            }
             }
         }
         private void Refresh()
@@ -121,13 +129,14 @@ namespace KeeperPRO.Pages
         {
 
             AccessApplication application = ApplicationsDG.SelectedItem as AccessApplication;
+            if(application != null) { 
             if (application.StartTime is null)
             {
                 MessageBox.Show("Чел еще не зашел ты че");
             }
             else 
             { 
-                if (application != null & application.EndTime is null)
+                if (application.EndTime is null)
                 {
                    application.EndTime = DateTime.Now;
                    App.db.SaveChanges();
@@ -138,23 +147,27 @@ namespace KeeperPRO.Pages
                     MessageBox.Show("Данные уже записаны или введены некорректно.");
                 }
             }
+            }
         }
 
+        private void AddNewApp_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddApplicationPage());
+        }
+
+        private void Del_Click(object sender, RoutedEventArgs e)
+        {
+            if(ApplicationsDG.SelectedItem != null) { 
+            App.db.AccessApplication.Remove((AccessApplication)ApplicationsDG.SelectedItem);
+            App.db.SaveChanges();
+            Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Не выбрана запись.");
+            }
+        }
     }
 }
 
-                    //        }
-                    //        if (SearchTb.Text != null)
-                    //        {
-                    //            services = services.Where(x => x.Title.Contains(SearchTb.Text));
-                    //        }
-                    //        ServiceWrapPanel.Children.Clear();
-                    //        foreach (var service in services)
-                    //        {
-                    //            ServiceWrapPanel.Children.Add(
-                    //                new ServiceUserControl(service));
-                    //        }
-                    //        CountOfItems.Text = $"{services.Count()} из {App.db.Service.Count()}";
-                    //    }
-                    //}
                 

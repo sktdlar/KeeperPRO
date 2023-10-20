@@ -25,5 +25,17 @@ namespace KeeperPRO
             InitializeComponent();
             MainFrame.Navigate(new Pages.AuthorizationPage());
         }
+
+        private void GoBackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MainFrame.GoBack();
+            }
+            catch
+            {
+                MessageBox.Show("Это крайняя страница");
+            }
+        }
     }
 }

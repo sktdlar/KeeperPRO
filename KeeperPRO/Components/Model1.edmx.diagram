@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="KeeperPROModel.Permission" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="KeeperPROModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="KeeperPROModel.FK_Access_Permission" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="KeeperPROModel.AccessApplication" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="KeeperPROModel.AccessApplication" Width="1.5" PointX="0.75" PointY="0.75" />
         <AssociationConnector Association="KeeperPROModel.FK_Access_AccessApplication" />
       </Diagram>
     </edmx:Diagrams>
