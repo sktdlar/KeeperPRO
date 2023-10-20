@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="KeeperPRO.UserControls.ApplicationUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KeeperPRO.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="800">
+    <Grid>
+        <StackPanel VerticalAlignment="Top" Margin="10"  Orientation="Horizontal">
+            <TextBlock FontSize="32">LNAME</TextBlock>
+            <TextBlock FontSize="32">FNAME</TextBlock>
+            <TextBlock FontSize="32">PATRONYMIC</TextBlock>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBlock FontSize="24">Паспорт:</TextBlock>
+            <TextBlock FontSize="24">9229 143154</TextBlock>
+            <TextBlock FontSize="24">Подразделение</TextBlock>
+            <TextBlock FontSize="24">1</TextBlock>
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal">
+            <TextBlock FontSize="24">Дата заявки:</TextBlock>
+            <TextBlock FontSize="24">19.10.2023</TextBlock>
+            <TextBlock FontSize="24">Тип</TextBlock>
+            <TextBlock FontSize="24">1</TextBlock>
+            <TextBlock FontSize="24">Подразделение</TextBlock>
+            <TextBlock FontSize="24">1</TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>

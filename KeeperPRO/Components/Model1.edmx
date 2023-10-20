@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище KeeperPROModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Access">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="idApplication" Type="int" />
+          <Property Name="Permission" Type="nchar" MaxLength="1" />
+          <Property Name="StartTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AccessApplication">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Department" Type="int" />
+          <Property Name="Fname" Type="nvarchar" MaxLength="40" />
+          <Property Name="Lname" Type="nvarchar" MaxLength="40" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="40" />
+          <Property Name="Passport" Type="nvarchar" MaxLength="10" />
+          <Property Name="EndTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="FName" Type="nvarchar" MaxLength="40" />
+          <Property Name="LName" Type="nvarchar" MaxLength="40" />
+          <Property Name="EmployeeCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="EmployeePassword" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Access_AccessApplication">
+          <End Role="AccessApplication" Type="Self.AccessApplication" Multiplicity="0..1" />
+          <End Role="Access" Type="Self.Access" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessApplication">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Access">
+              <PropertyRef Name="idApplication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Access_Permission">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="0..1" />
+          <End Role="Access" Type="Self.Access" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Access">
+              <PropertyRef Name="Permission" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище KeeperPROModelContainer">
+          <EntitySet Name="Access" EntityType="Self.Access" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccessApplication" EntityType="Self.AccessApplication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Access_AccessApplication" Association="Self.FK_Access_AccessApplication">
+            <End Role="AccessApplication" EntitySet="AccessApplication" />
+            <End Role="Access" EntitySet="Access" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Access_Permission" Association="Self.FK_Access_Permission">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="Access" EntitySet="Access" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KeeperPROModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Access">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="idApplication" Type="Int32" />
+          <Property Name="Permission" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="StartTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Permission1" Relationship="Self.FK_Access_Permission" FromRole="Access" ToRole="Permission" />
+          <NavigationProperty Name="AccessApplication" Relationship="KeeperPROModel.FK_Access_AccessApplication" FromRole="Access" ToRole="AccessApplication" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="FName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="LName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeePassword" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Access" Relationship="Self.FK_Access_Permission" FromRole="Permission" ToRole="Access" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Access_Permission">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="0..1" />
+          <End Role="Access" Type="Self.Access" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Access">
+              <PropertyRef Name="Permission" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KeeperPROEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Access" EntityType="Self.Access" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Permission" EntityType="Self.Permission" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_Access_Permission" Association="Self.FK_Access_Permission">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="Access" EntitySet="Access" />
+          </AssociationSet>
+          <EntitySet Name="AccessApplication" EntityType="KeeperPROModel.AccessApplication" />
+          <AssociationSet Name="FK_Access_AccessApplication" Association="KeeperPROModel.FK_Access_AccessApplication">
+            <End Role="AccessApplication" EntitySet="AccessApplication" />
+            <End Role="Access" EntitySet="Access" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AccessApplication">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Department" Type="Int32" />
+          <Property Name="Fname" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Lname" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Passport" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Access" Relationship="KeeperPROModel.FK_Access_AccessApplication" FromRole="AccessApplication" ToRole="Access" />
+        </EntityType>
+        <Association Name="FK_Access_AccessApplication">
+          <End Type="KeeperPROModel.AccessApplication" Role="AccessApplication" Multiplicity="0..1" />
+          <End Type="KeeperPROModel.Access" Role="Access" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessApplication">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Access">
+              <PropertyRef Name="idApplication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище KeeperPROModelContainer" CdmEntityContainer="KeeperPROEntities">
+          <EntitySetMapping Name="Access">
+            <EntityTypeMapping TypeName="KeeperPROModel.Access">
+              <MappingFragment StoreEntitySet="Access">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idApplication" ColumnName="idApplication" />
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="KeeperPROModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="EmployeePassword" ColumnName="EmployeePassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permission">
+            <EntityTypeMapping TypeName="KeeperPROModel.Permission">
+              <MappingFragment StoreEntitySet="Permission">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="KeeperPROModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccessApplication">
+            <EntityTypeMapping TypeName="KeeperPROModel.AccessApplication">
+              <MappingFragment StoreEntitySet="AccessApplication">
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="Passport" ColumnName="Passport" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

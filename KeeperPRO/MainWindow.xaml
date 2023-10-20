@@ -8,15 +8,13 @@
         Title="MainWindow" Height="450" Width="800"
         MinHeight="450" MinWidth="800"
         >
-    <Grid>
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="12*"/>
-            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <Rectangle Grid.Row="0" Fill="Black"></Rectangle>
-        <TextBlock Foreground="Yellow" FontSize="24" FontFamily="Arial" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">ХранительПРО</TextBlock>
-        <Frame Name="MainFrame" Grid.Row="1"></Frame>
-        <Rectangle Grid.Row="2" Fill="Black"></Rectangle>
+        <TextBlock Foreground="Black" FontSize="24" Margin="40 0 0 0" FontFamily="Arial" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left">Терминал охраны</TextBlock>
+        <Frame NavigationUIVisibility="Hidden" Name="MainFrame" Grid.Row="1"></Frame>
+
     </Grid>
 </Window>

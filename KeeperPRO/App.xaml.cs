@@ -13,5 +13,6 @@ namespace KeeperPRO
     /// </summary>
     public partial class App : Application
     {
+        public static Components.KeeperPROEntities db = new Components.KeeperPROEntities();
     }
 }

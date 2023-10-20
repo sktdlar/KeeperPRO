@@ -6,21 +6,18 @@
     <Application.Resources>
         <Style TargetType="Label">
             <Setter Property="FontFamily" Value="Arial"/>
-            <Setter Property="FontSize" Value="24"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="32"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Margin" Value="10"/>
         </Style>
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Arial"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="8"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Margin" Value="10"/>
         </Style>
-        <Style TargetType="Border">
-            <Setter Property="CornerRadius" Value="5"/>
-            <Setter Property="BorderThickness" Value="2"/>
-        </Style>
+        
+        
     </Application.Resources>
 </Application>
