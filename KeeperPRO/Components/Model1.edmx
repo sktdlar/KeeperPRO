@@ -26,6 +26,7 @@
           <Property Name="Lname" Type="nvarchar" MaxLength="40" />
           <Property Name="Patronymic" Type="nvarchar" MaxLength="40" />
           <Property Name="Passport" Type="nvarchar" MaxLength="10" />
+          <Property Name="StartTime" Type="datetime" />
           <Property Name="EndTime" Type="datetime" />
         </EntityType>
         <EntityType Name="Employee">
@@ -178,6 +179,7 @@
           <Property Name="Passport" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="EndTime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Access" Relationship="KeeperPROModel.FK_Access_AccessApplication" FromRole="AccessApplication" ToRole="Access" />
+          <Property Name="StartTime" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_Access_AccessApplication">
           <End Type="KeeperPROModel.AccessApplication" Role="AccessApplication" Multiplicity="0..1" />
@@ -240,6 +242,7 @@
           <EntitySetMapping Name="AccessApplication">
             <EntityTypeMapping TypeName="KeeperPROModel.AccessApplication">
               <MappingFragment StoreEntitySet="AccessApplication">
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
                 <ScalarProperty Name="EndTime" ColumnName="EndTime" />
                 <ScalarProperty Name="Passport" ColumnName="Passport" />
                 <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />

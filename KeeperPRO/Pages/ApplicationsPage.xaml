@@ -9,15 +9,11 @@
       Title="ApplicationsPage">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="195*"/>
-            <ColumnDefinition Width="4*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="411*"/>
-            <RowDefinition Height="35*"/>
+            <RowDefinition Height="79*"/>
+            <RowDefinition Height="71*"/>
         </Grid.RowDefinitions>
-        <DataGrid Name="ApplicationsDG" Grid.RowSpan="1" Grid.ColumnSpan="1">
+        <DataGrid AutoGenerateColumns="False" Name="ApplicationsDG">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding Lname}"/>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Fname}"/>
@@ -26,24 +22,57 @@
                 <DataGridTextColumn Header="Подразделение" Binding="{Binding Department}"/>
                 <DataGridTextColumn Header="Тип" Binding="{Binding Type}"/>
                 <DataGridTextColumn Header="Дата заявки" Binding="{Binding Date}"/>
-                <DataGridTextColumn Header="Дата прибытия" Binding="{Binding }"/>
-                <DataGridTextColumn Header="Дата убытия" Binding="{Binding}"/>
-
-
+                <DataGridTextColumn Header="Дата прибытия" Binding="{Binding StartTime }"/>
+                <DataGridTextColumn Header="Дата убытия" Binding="{Binding EndTime}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button Width="200" >
+        <StackPanel Grid.Row="1">
+        <StackPanel VerticalAlignment="Top" Grid.Row="1" Orientation="Horizontal">
+            <Button Name="InBtn" Margin="10" Height="30"  Width="150" Click="Button_Click" >
                 <StackPanel VerticalAlignment="Center">
                     <TextBlock FontSize="18">Пропустить</TextBlock>
                 </StackPanel>
             </Button>
-            <Button Width="200" >
+            <Button Name="OutBtn" Margin="10" Height="30" Width="150" Click="OutBtn_Click" >
                 <StackPanel VerticalAlignment="Center">
                     <TextBlock FontSize="18">Выпустить</TextBlock>
                 </StackPanel>
             </Button>
-
+            <Button Name="AddNewApp"  Margin="10" Height="30" Width="200" >
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock FontSize="18">Создать заявку</TextBlock>
+                </StackPanel>
+            </Button>
         </StackPanel>
+        <TextBlock Grid.Row="1" VerticalAlignment="Center" Margin="10">Сортировка</TextBlock>
+        
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <TextBlock Margin="10" VerticalAlignment="Center">По времени</TextBlock>
+            <ComboBox Width="150" Height="30" Name="DateSortCb" SelectionChanged="DateSortCb_SelectionChanged">
+                <ComboBoxItem>По умолчанию</ComboBoxItem>
+                <ComboBoxItem>В течение 3 дней</ComboBoxItem>
+                <ComboBoxItem>В течение 14 дней</ComboBoxItem>
+                <ComboBoxItem>В течение 30 дней</ComboBoxItem>
+            </ComboBox>
+            <TextBlock Margin="20 0 10 0" VerticalAlignment="Center">По типу</TextBlock>
+            <ComboBox Width="150" Height="30" Name="TypeSortCb" SelectionChanged="TypeSortCb_SelectionChanged">
+                <ComboBoxItem>По умолчанию</ComboBoxItem>
+                <ComboBoxItem>1</ComboBoxItem>
+                <ComboBoxItem>2</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+            <StackPanel Margin="10" VerticalAlignment="Bottom"  Orientation="Horizontal">
+                <TextBlock Margin="0 0 10 0" VerticalAlignment="Center">По подразделению</TextBlock>
+            <ComboBox Width="150" Height="30" Name="DepartmentSortCb" SelectionChanged="DepartmentSortCb_SelectionChanged">
+                <ComboBoxItem>По умолчанию</ComboBoxItem>
+                <ComboBoxItem>1</ComboBoxItem>
+                <ComboBoxItem>2</ComboBoxItem>
+            </ComboBox>
+            <TextBlock VerticalAlignment="Center" Margin="20 0 10 0">Паспорт</TextBlock>
+            <TextBox Margin="10" Width="150" Height="30" FontSize="10" Name="SearchTb" TextChanged="SearchTb_TextChanged"/>
+          
+        </StackPanel>
+        </StackPanel>
+        
     </Grid>
 </Page>

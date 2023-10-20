@@ -13,9 +13,7 @@
         </Style>
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Arial"/>
-            <Setter Property="FontSize" Value="8"/>
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Margin" Value="10"/>
         </Style>
         
         
